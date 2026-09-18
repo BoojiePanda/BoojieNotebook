@@ -1,0 +1,13 @@
+## Interface: 120100
+## Title: |cFFFF8DA1Boojie Notebook|r
+## Author: SilverRavyn
+## Notes: Character and account-wide notes, lists, and references.
+## Version: 1.0.6
+## Category: Quality of Life
+## IconTexture: Interface\AddOns\BoojieNotebook\BoojieNotebookIcon.png
+## SavedVariables: BoojieNotebookDB
+## OptionalDeps: ElvUI, SharedMedia_MyMedia
+
+Core.lua
+UI.lua
+Minimap.lua
