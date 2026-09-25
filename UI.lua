@@ -220,9 +220,6 @@ function BN:ApplyTheme()
     if themeDropdownText then
         themeDropdownText:SetTextColor(text[1], text[2], text[3])
     end
-    if self.minimapButton then
-        self.minimapButton.icon:SetVertexColor(1, 1, 1)
-    end
     if self.header then
         self:UpdateHeader()
     end
@@ -626,7 +623,7 @@ function BN:CreateSidebar()
     minimap.text:SetPoint("LEFT", minimap, "RIGHT", 2, 0)
     minimap:SetScript("OnClick", function(button)
         self.db.settings.showMinimapButton = button:GetChecked() and true or false
-        self.minimapButton:SetShown(self.db.settings.showMinimapButton)
+        self:SetMinimapButtonShown(self.db.settings.showMinimapButton)
     end)
 end
 
@@ -874,7 +871,7 @@ function BN:RegisterSettings()
     local icon = panel:CreateTexture(nil, "ARTWORK")
     icon:SetSize(128, 128)
     icon:SetPoint("TOP", 0, -28)
-    icon:SetTexture("Interface\\AddOns\\BoojieNotebook\\BoojieNotebookSettingsIcon.png")
+    icon:SetTexture(ADDON_ICON)
 
     local title = panel:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
     title:SetPoint("TOP", icon, "BOTTOM", 0, -12); title:SetText("Boojie Notebook")

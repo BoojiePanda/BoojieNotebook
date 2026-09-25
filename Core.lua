@@ -25,7 +25,7 @@ local defaults = {
     theme = "class",
     classColorName = true,
     showMinimapButton = true,
-    minimapAngle = 135,
+    minimap = { minimapPos = 135 },
     width = 980,
     height = 650,
 }
@@ -134,7 +134,13 @@ function BN:InitializeDatabase()
     BoojieNotebookDB = BoojieNotebookDB or {}
     self.db = BoojieNotebookDB
     self.db.settings = self.db.settings or {}
+    local legacyMinimapAngle = tonumber(self.db.settings.minimapAngle)
+    local hadMinimapSettings = type(self.db.settings.minimap) == "table"
     CopyDefaults(self.db.settings, defaults)
+    if legacyMinimapAngle and not hadMinimapSettings then
+        self.db.settings.minimap.minimapPos = legacyMinimapAngle
+    end
+    self.db.settings.minimapAngle = nil
     self.db.account = self.db.account or NewNotebook()
     self.db.characters = self.db.characters or {}
 
